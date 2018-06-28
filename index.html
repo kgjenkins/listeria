@@ -1,0 +1,183 @@
+<html>
+<head>
+<title>Listeria Scoping Review articles</title>
+<style type='text/css'>
+h1 {
+  margin
+}
+#results {
+  margin:2em;
+}
+.csl-entry {
+  margin: 1em 2em;
+  text-indent: -2em;
+}
+.tag {
+  background: #0a0;
+  color: #fff;
+  padding: 2px 1em;
+  border-radius: 1em;
+  font-family: Arial, sans-serif;
+  font-size: 75%;
+}
+</style>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script>
+  var group = '2186797';
+  var collection = 'NXL7VPB6';
+  var key = 'KpHyo9b7kEXZEROhZw4IMriO';
+
+  var featured_tags = [
+    'Subtyping contamination',
+    'Environmental monitoring',
+    'Characterizing isolates',
+    'Validating detection methods',
+    'Outbreak investigations',
+    'Evaluating interventions',
+    'Guidance documents',
+    'Government documents',
+    'Fish and seafood',
+    'Meat',
+    'Dairy',
+    'Poultry',
+    'Fresh produce',
+    'Ready-to-Eat products (not specified)',
+    'Other'
+  ]
+
+var records = {};
+$(document).ready(function(){
+
+  var url = 'https://api.zotero.org/groups/' + group + '/collections/' + collection + '/items';
+  var params = {
+    limit: 100,
+    start: 0,
+    sort: 'creator',
+    include: 'bib,data',
+    itemType: '-note',
+    style: 'apa',
+    key: key
+  };
+
+  //url = 'all_items.json';
+  $.get(url, params, got_page);
+
+  function got_page(data) {
+    for (var i=0; i<data.length; i++) {
+      var k = data[i].key;
+      var r = data[i];
+      r = simplify_tags(r);
+      records[k] = r;
+    }
+    if (data.length==100) {
+      // fetch next page
+      params.start += 100;
+      $.get(url, params, got_page);
+    }
+    else {
+      list_records();
+    }
+  }
+
+  $(document).on('click', 'button#go', list_records);
+  $(document).on('change', 'select', list_records);
+
+});
+
+
+function simplify_tags(r) {
+  // convert zotero's tags:[tag:'this', tag:that']
+  // to simpler tags:['this','that']
+  for (var i=0; i<r.data.tags.length; i++) {
+    r.data.tags[i] = r.data.tags[i].tag;
+  }
+  return r
+}
+
+
+function list_records() {
+  $('#results').html('');
+  var count = 0;
+  for (var k in records) {
+    var r = records[k];
+
+    // display records that match the tags
+    if (match_tags(r)) {
+      count++;
+      var html = $(r.bib).html();
+      html = linkify(html);
+      var item = $(html);
+      item = add_tags(item, r.data.tags);
+      $('#results').append(item);
+    }
+  }
+  $('<div>').text(count + ' matching item' + (count != 1 ? 's' :'')).prependTo('#results');
+}
+
+function add_tags(item, tags) {
+  for (var i=0; i<tags.length; i++) {
+    var t = tags[i];
+    if (featured_tags.indexOf(t) > -1) {
+      item.append(' <span class="tag">' + t + '</span>');
+    }
+  }
+  return item;
+}
+
+function linkify(html) {
+  return html.replace(/http[\S]*/g, "<a href='$&'>$&</a>");
+}
+
+function match_tags(item) {
+  // return true if the item includes the specified tags
+  var tags = [];
+  if (tag1.value) {
+    tags.push(tag1.value);
+  }
+  if (tag2.value) {
+    tags.push(tag2.value);
+  }
+  for (var i=0; i<tags.length; i++) {
+    var tag_to_match = tags[i];
+    if (tag_to_match.length>0) {
+      if (item.data.tags.indexOf(tag_to_match) == -1) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+</script>
+</head>
+<body>
+<h1>Listeria Scoping Review articles</h1>
+<div>
+  Tag1:
+  <select id='tag1'>
+    <option></option>
+    <option>Subtyping contamination</option>
+    <option>Environmental monitoring</option>
+    <option>Characterizing isolates</option>
+    <option>Validating detection methods</option>
+    <option>Outbreak investigations</option>
+    <option>Evaluating interventions</option>
+    <option>Guidance documents</option>
+    <option>Government documents</option>
+  </select>
+  Tag2:
+  <select id='tag2'>
+    <option></option>
+    <option>Fish and seafood</option>
+    <option>Meat</option>
+    <option>Dairy</option>
+    <option>Poultry</option>
+    <option>Fresh produce</option>
+    <option>Ready-to-Eat products (not specified)</option>
+    <option>Other</option>
+  </select>
+</div>
+<div id='results'>Loading data from Zotero (this may take several seconds)...</div>
+</body>
+</html>
+
