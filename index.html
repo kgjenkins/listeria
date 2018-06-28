@@ -23,66 +23,71 @@ h1 {
 </style>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 <script>
-  var group = '2186797';
-  var collection = 'NXL7VPB6';
-  var key = 'KpHyo9b7kEXZEROhZw4IMriO';
+var group = '2186797';
+var collection = 'NXL7VPB6';
+var key = 'KpHyo9b7kEXZEROhZw4IMriO';
 
-  var featured_tags = [
-    'Subtyping contamination',
-    'Environmental monitoring',
-    'Characterizing isolates',
-    'Validating detection methods',
-    'Outbreak investigations',
-    'Evaluating interventions',
-    'Guidance documents',
-    'Government documents',
-    'Fish and seafood',
-    'Meat',
-    'Dairy',
-    'Poultry',
-    'Fresh produce',
-    'Ready-to-Eat products (not specified)',
-    'Other'
-  ]
+// TODO grab these from the drop-down menus
+var featured_tags = [
+  'Subtyping contamination',
+  'Environmental monitoring',
+  'Characterizing isolates',
+  'Validating detection methods',
+  'Outbreak investigations',
+  'Evaluating interventions',
+  'Guidance documents',
+  'Government documents',
+  'Fish and seafood',
+  'Meat',
+  'Dairy',
+  'Poultry',
+  'Fresh produce',
+  'Ready-to-Eat products (not specified)',
+  'Other'
+];
 
 var records = {};
+var url = 'https://api.zotero.org/groups/' + group + '/collections/' + collection + '/items';
+var params = {
+  limit: 100,
+  start: 0,
+  sort: 'creator',
+  include: 'bib,data',
+  itemType: '-note',
+  style: 'apa',
+  key: key
+};
+
 $(document).ready(function(){
-
-  var url = 'https://api.zotero.org/groups/' + group + '/collections/' + collection + '/items';
-  var params = {
-    limit: 100,
-    start: 0,
-    sort: 'creator',
-    include: 'bib,data',
-    itemType: '-note',
-    style: 'apa',
-    key: key
-  };
-
-  url = 'all_items.json';
+  var url = 'all_items.json';
   $.get(url, params, got_page);
-
-  function got_page(data) {
-    for (var i=0; i<data.length; i++) {
-      var k = data[i].key;
-      var r = data[i];
-      r = simplify_tags(r);
-      records[k] = r;
-    }
-    if (data.length==100) {
-      // fetch next page
-      params.start += 100;
-      $.get(url, params, got_page);
-    }
-    else {
-      list_records();
-    }
-  }
-
-  $(document).on('click', 'button#go', list_records);
   $(document).on('change', 'select', list_records);
-
+  $(document).on('click', 'button#zotero', load_from_zotero);
 });
+
+
+function load_from_zotero() {
+  $('#results').html('Loading data from Zotero... this may take several seconds...');
+  $.get(url, params, got_page);
+}
+
+
+function got_page(data) {
+  for (var i=0; i<data.length; i++) {
+    var k = data[i].key;
+    var r = data[i];
+    r = simplify_tags(r);
+    records[k] = r;
+  }
+  if (data.length==100) {
+    // fetch next page
+    params.start += 100;
+    $.get(url, params, got_page);
+  }
+  else {
+    list_records();
+  }
+}
 
 
 function simplify_tags(r) {
@@ -176,8 +181,9 @@ function match_tags(item) {
     <option>Ready-to-Eat products (not specified)</option>
     <option>Other</option>
   </select>
+  <button id='zotero'>Load current data from zotero</button>
 </div>
-<div id='results'>Loading data from Zotero (this may take several seconds)...</div>
+<div id='results'></div>
 </body>
 </html>
 
