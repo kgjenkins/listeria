@@ -5,6 +5,9 @@
 h1 {
   margin
 }
+#summary {
+  font-weight:bold;
+}
 #results {
   margin:2em;
 }
@@ -27,6 +30,8 @@ var group = '2186797';
 var collection = 'NXL7VPB6';
 var key = 'KpHyo9b7kEXZEROhZw4IMriO';
 
+// only these "featured tags" will appear in the list of items
+// other tags from Zotero will be ignored
 // TODO grab these from the drop-down menus
 var featured_tags = [
   'Subtyping contamination',
@@ -116,7 +121,7 @@ function list_records() {
       $('#results').append(item);
     }
   }
-  $('<div>').text(count + ' matching item' + (count != 1 ? 's' :'')).prependTo('#results');
+  $('<div id="summary">').text(count + ' matching item' + (count != 1 ? 's' :'')).prependTo('#results');
 }
 
 function add_tags(item, tags) {
