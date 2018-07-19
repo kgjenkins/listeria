@@ -137,7 +137,7 @@ function add_tags(item, tags) {
 }
 
 function linkify(html) {
-  return html.replace(/http[\S]*/g, "<a href='$&'>$&</a>");
+  return html.replace(/http[^ <]*/g, "<a href='$&'>$&</a>");
 }
 
 function match_tags(item) {
