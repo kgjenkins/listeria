@@ -2418,7 +2418,7 @@
             "parsedDate": "2010",
             "numChildren": 1
         },
-        "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 2em; text-indent:-2em;\">\n  <div class=\"csl-entry\">Butts, J. N. (2010). A team approach for management of the elements of a Listeria intervention and control program (Vol. 2, pp. 6&#x2013;14). Presented at the Arkansas Association for Food Protection (AAFP), Springdale, AR: Agriculture, Food and Analytical Bacteriology. Retrieved from www.innocua.net/web/download-778/afab-v2-i1-a2.pdf</div>\n</div>",
+        "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 2em; text-indent:-2em;\">\n  <div class=\"csl-entry\">Butts, J. N. (2010). A team approach for management of the elements of a Listeria intervention and control program (Vol. 2, pp. 6&#x2013;14). Presented at the Arkansas Association for Food Protection (AAFP), Springdale, AR: Agriculture, Food and Analytical Bacteriology. Retrieved from http://www.innocua.net/web/download-778/afab-v2-i1-a2.pdf</div>\n</div>",
         "data": {
             "key": "5QU6P5R2",
             "version": 301,
@@ -2444,7 +2444,7 @@
             "DOI": "",
             "ISBN": "",
             "shortTitle": "",
-            "url": "www.innocua.net/web/download-778/afab-v2-i1-a2.pdf",
+            "url": "http://www.innocua.net/web/download-778/afab-v2-i1-a2.pdf",
             "accessDate": "",
             "archive": "",
             "archiveLocation": "",
@@ -3273,7 +3273,7 @@
             "parsedDate": "2013",
             "numChildren": 1
         },
-        "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 2em; text-indent:-2em;\">\n  <div class=\"csl-entry\">Caselani, K., Prata, L. F., Prata, C. B., Bizari, P. A., &amp; Pereira, G. T. (2013). Relationship between HACCP controls, pathogen reduction program and meat quality during cattle slaughter process: One year survey in a Brazilian exporting abattoir. <i>Revista Portuguesa de Ciencias Veterinarias</i>, <i>108</i>(585), 29&#x2013;38. Retrieved from www.fmv.ulisboa.pt/spcv/PDF/pdf12_2013/29-38.pdf</div>\n</div>",
+        "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 2em; text-indent:-2em;\">\n  <div class=\"csl-entry\">Caselani, K., Prata, L. F., Prata, C. B., Bizari, P. A., &amp; Pereira, G. T. (2013). Relationship between HACCP controls, pathogen reduction program and meat quality during cattle slaughter process: One year survey in a Brazilian exporting abattoir. <i>Revista Portuguesa de Ciencias Veterinarias</i>, <i>108</i>(585), 29&#x2013;38. Retrieved from http://www.fmv.ulisboa.pt/spcv/PDF/pdf12_2013/29-38.pdf</div>\n</div>",
         "data": {
             "key": "YLHEUPSB",
             "version": 315,
@@ -3320,7 +3320,7 @@
             "DOI": "",
             "ISSN": "",
             "shortTitle": "",
-            "url": "www.fmv.ulisboa.pt/spcv/PDF/pdf12_2013/29-38.pdf",
+            "url": "http://www.fmv.ulisboa.pt/spcv/PDF/pdf12_2013/29-38.pdf",
             "accessDate": "",
             "archive": "",
             "archiveLocation": "",
@@ -16879,7 +16879,7 @@
             "parsedDate": "2003",
             "numChildren": 1
         },
-        "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 2em; text-indent:-2em;\">\n  <div class=\"csl-entry\">Medrala, D., Dabrowski, W., &amp; Szymanska, L. (2003). Application of multiplex PCR in routine microbiological diagnostics of Listeria monocytogenes and Listeria sp. strains in a meat-processing plant. <i>Polish Journal of Food and Nutrition Sciences</i>, <i>12</i>(1), 59&#x2013;64. Retrieved from journal.pan.olsztyn.pl/pdfy/2003/1/rozdzial1.11.pdf</div>\n</div>",
+        "bib": "<div class=\"csl-bib-body\" style=\"line-height: 2; padding-left: 2em; text-indent:-2em;\">\n  <div class=\"csl-entry\">Medrala, D., Dabrowski, W., &amp; Szymanska, L. (2003). Application of multiplex PCR in routine microbiological diagnostics of Listeria monocytogenes and Listeria sp. strains in a meat-processing plant. <i>Polish Journal of Food and Nutrition Sciences</i>, <i>12</i>(1), 59&#x2013;64. Retrieved from http://journal.pan.olsztyn.pl/pdfy/2003/1/rozdzial1.11.pdf</div>\n</div>",
         "data": {
             "key": "9XZ3WMIG",
             "version": 364,
@@ -16916,7 +16916,7 @@
             "DOI": "",
             "ISSN": "1230-0322",
             "shortTitle": "",
-            "url": "journal.pan.olsztyn.pl/pdfy/2003/1/rozdzial1.11.pdf",
+            "url": "http://journal.pan.olsztyn.pl/pdfy/2003/1/rozdzial1.11.pdf",
             "accessDate": "",
             "archive": "",
             "archiveLocation": "",
